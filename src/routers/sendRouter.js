@@ -3,6 +3,10 @@ const router = new express.Router
 const sendEmail = require('../emails/email.js')
 
 
+router.get('/', (req, res) => {
+    res.send()
+})
+
 router.post('/send', async (req, res) => {
     try {
         await sendEmail(req.body.name, req.body.email, req.body.message)
