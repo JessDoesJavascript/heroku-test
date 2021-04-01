@@ -95,7 +95,7 @@ class ContactForm extends React.Component {
             name: '',
             email: '',
             message: '',
-            send: false,
+            sent: false,
             buttonText: 'Send Message'
         }
     }
@@ -125,12 +125,13 @@ class ContactForm extends React.Component {
             message: this.state.message }
             console.log(params)    
             axios
-                .post('http://localhost:5000/send', params)
+                .post('/send', params)
                 .then(res => {
                     this.setState({ sent: true }, this.resetForm())
                 })
                 .catch(() => {
                     console.log('Message not sent');
+                    this.setState({ buttonText: "message not sent" })
         })
     }
 
